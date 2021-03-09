@@ -7,14 +7,24 @@ import java.util.concurrent.TimeoutException;
 
 /**
  * Created by ye830 on 3/9/2021.
- * 例如 要等待所有成员都入关之后，进行集合，然后一起去下一个目的地
+ * 例如 要等待所有成员都入关之后，进行集合，然后一起去下一个目的地 （模拟其中一个人迟到了）
  */
-public class CyclicBarrierTest {
+public class CyclicBarrierTimeoutTest {
     public static void main(String[] args) {
         CyclicBarrier cyclicBarrier = new CyclicBarrier(10,
                 () -> System.out.println("----------- Everyone is here, let's go to the next station"));
         for (int i = 0; i < 10; i++) {
-            new Immigration(cyclicBarrier).start();
+            if(i < 9){
+                new Immigration(cyclicBarrier).start();
+            } else {
+                try {
+                    Thread.sleep(5000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                new Immigration(cyclicBarrier).start();
+            }
+
         }
     }
 
