@@ -1,4 +1,4 @@
-package com.chris.inner_class_test;
+package com.chris.nested_class_test;
 
 /**
  * Created by ye830 on 2/22/2018.
@@ -8,6 +8,14 @@ public class Parcel1 {
     private String myName;
 
     private int count = 0;
+
+//    public class innerClass{
+//        static {
+                //inner-class can not have static declarations
+//
+//        }
+//    }
+
 
     interface Interface1 {
         String sayMyName();
@@ -63,6 +71,8 @@ public class Parcel1 {
         return innerClass2.innerCount;
     }
 
+
+
     public static void main(String[] args) {
         Parcel1 parcel1 = new Parcel1();
 
@@ -78,6 +88,11 @@ public class Parcel1 {
         System.out.println(interface2.sayMyCount());
 
         Parcel1.InnerClass1 innerClass1 = parcel1.new InnerClass1();
+
+        System.out.println(StaticNestedClassOuter.StaticNestedClassInner.name_cn);
+
+        // 这个是会报错的，name has private access in some class
+        //System.out.println(StaticNestedClassOuter.StaticNestedClassInner.name);
 
     }
 }

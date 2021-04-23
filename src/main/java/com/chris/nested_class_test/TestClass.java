@@ -1,4 +1,4 @@
-package com.chris.inner_class_test;
+package com.chris.nested_class_test;
 
 /**
  * Created by ye830 on 2/22/2018.
